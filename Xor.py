@@ -11,13 +11,16 @@ name.- Nombre del archivo de salida
 def decrypt(file_bytes,name):
     #Encuentra la llave por medio de fuerza bruta
     key = give_key_brute(file_bytes)
+    print("La key encontrada por medio de fuerza bruta es:",key,"(notación decimal)")
     #Verifica que se haya logrado encontrar la llave
     if key != -1:
         #Aplica la función xor a todo el arreglo utilizando la llave
         xor_bytes = xor(file_bytes,key)
-        #index_c = get_index_two(xor_bytes,77,90)
+        #77 =M, 90=Z, MZ número mágico de ejecutables
+        index_c = get_index_two(xor_bytes,77,90)
+        print("La cabecera eliminada era de",index_c,"bytes")
         #Quitar la cabecera de xor_bytes
-        #xor_bytes = xor_bytes[index_c:-1]
+        xor_bytes = xor_bytes[index_c:]
         #Crea un archivo nuevo o en caso de exitir uno con el mismo nombre elimina su contenido
         new_file = open(name,'wb')
         #Crea un arreglo de bytes a partir del arreglo de ints y lo escribe en el archivo
@@ -159,15 +162,3 @@ else:
     print("No se ingreso el número de argumentos correctos.")
     print("Por favor ejecute:")
     print("\n /bin/python3/ Xor.py <Archivo cifrado> <Nombre del archivo de salida>\n")
-
-    """
-    file_bytes= file_to_bytes(sys.argv[1])
-    key = give_key_brute(file_bytes)
-    xor_bytes = xor(file_bytes,key)
-
-    #print(xor_bytes)
-    a = [1,2,3,4,5]
-    b = get_index_two(a,3,6)
-    if b:
-        print(b)
-        """
