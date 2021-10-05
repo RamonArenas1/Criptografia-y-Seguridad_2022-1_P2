@@ -5,4 +5,4 @@
 * Juan Manuel Guerrero Pérez
 
 ## Ejecución
-Ejecute con el comando */bin/python3/ Xor.py <Archivo cifrado> <Nombre del archivo de salida>*
+Ejecute con el comando */bin/python3/ Xor.py ```<Archivo cifrado> <Nombre del archivo de salida>```*
